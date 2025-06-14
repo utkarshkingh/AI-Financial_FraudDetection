@@ -179,4 +179,3 @@ if [[ $WAITFORIT_CLI != "" ]]; then
     exec "${WAITFORIT_CLI[@]}"
 else
     exit $WAITFORIT_RESULT
-fi
