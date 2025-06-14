@@ -9,4 +9,4 @@ RUN pip install -r /app/requirements.txt
 COPY . .
 
 # Set the command to run your application
-EXPOSE 5500n
+EXPOSE 5500
