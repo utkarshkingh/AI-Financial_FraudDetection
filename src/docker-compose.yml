@@ -286,9 +286,10 @@ services:
     platform: linux/amd64
     container_name: minio
     ports:
-      - "9000:9000"
-      - "9001:9001"
-    command: server /data --console-address ':9001' --address ':9000'
+      - "7000:7000"
+      - "7001:7001"
+    command: server /data --console-address ':7001' --address ':7000'
+
     environment:
       - MINIO_ROOT_USER=${MINIO_USERNAME}
       - MINIO_ROOT_PASSWORD=${MINIO_PASSWORD}
