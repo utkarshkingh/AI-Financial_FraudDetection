@@ -33,7 +33,7 @@ RUN curl -fsSL https://github.com/confluentinc/librdkafka/archive/refs/tags/v2.8
     rm -rf librdkafka-2.8.0 librdkafka.tar.gz
 
 # Copy requirements and install Python dependencies
-COPY ./requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt
 
 # Copy application code
