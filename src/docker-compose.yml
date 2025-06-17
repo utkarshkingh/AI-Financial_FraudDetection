@@ -286,8 +286,8 @@ services:
     platform: linux/amd64
     container_name: minio
     ports:
-      - "7000:7000"
       - "7001:7001"
+      - "7002:7002"
     command: server /data --console-address ':7001' --address ':7000'
 
     environment:
