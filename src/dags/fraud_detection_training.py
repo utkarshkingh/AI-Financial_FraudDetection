@@ -42,7 +42,7 @@ from dotenv import load_dotenv
 from imblearn.over_sampling import SMOTE
 from kafka import KafkaConsumer
 from mlflow.models import infer_signature
-from numpy.array_api import astype
+#from numpy.array_api import astype
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import make_scorer, fbeta_score, precision_recall_curve, average_precision_score, precision_score, \
     recall_score, f1_score, confusion_matrix
