@@ -2,8 +2,9 @@ from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.exceptions import AirflowException
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
+
 import logging
 
 
@@ -18,16 +19,12 @@ default_args= {
    # 'execution_timeout':timedelta(minutes=120),
     'max_active_runs':1,
 
-
 }
-
 
 def _train_model(**context):
     """Airflow wrapper for training task """
 
     pass
-
-
 
 with DAG(
 
