@@ -5,6 +5,8 @@ from airflow.exceptions import AirflowException
 from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.standard.operators.python import PythonOperator
 
+
+
 import logging
 
 
@@ -56,7 +58,6 @@ with DAG(
     training_task = PythonOperator(
         task_id='execute_training',
         python_callable=_train_model,
-        provide_context=True,
     )
 
     cleanup_task = BashOperator(
