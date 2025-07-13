@@ -33,6 +33,7 @@ import logging
 import os
 
 import boto3
+import certifi
 import matplotlib.pyplot as plt
 import mlflow
 import numpy as np
@@ -57,7 +58,10 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(module)s - %(message)s",
     level=logging.INFO,
     handlers=[
-        logging.FileHandler('./fraud_detection_model.log'),
+        logging.FileHandler('/tmp/fraud_detection_model.log'),
+
+
+
         logging.StreamHandler()
     ]
 )
@@ -196,7 +200,9 @@ class FraudDetectionTraining:
                 sasl_plain_password=self.config['kafka']['password'],
                 value_deserializer=lambda x: json.loads(x.decode('utf-8')),
                 auto_offset_reset='earliest',
-                consumer_timeout_ms=self.config['kafka'].get('timeout', 10000)
+                consumer_timeout_ms=self.config['kafka'].get('timeout', 10000),
+                ssl_cafile=certifi.where()
+
 
 
             )

@@ -8,8 +8,8 @@ mlflow:
 
 kafka:
   bootstrap_servers: "pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092"
-  username: "CMAQN5QJBKXOQRMY"
-  password: "/Qxy939zbJ0mv6Uehlujk/3nCXi1674n3bp6TTVdVCAArO0BbCCs1dhTTtsStSJ+"
+  username: "F3LQAFLBHSFY5PPI"
+  password: "mEySXTBY97pjaUI6trS5RPgIHnOfAe2ZSrgQdaKiTRXkgadVYyr+bvWypBLxH4xE"
   topic: "AI_FraudDetection"
   output_topic: "fraud_predictions"
   security_protocol: 'SASL_SSL'

@@ -9,7 +9,9 @@ and writes predictions back to Kafka.
 # Standard library imports
 import logging
 import os
+import ssl
 
+import certifi
 # Third-party imports
 import joblib  # For loading serialized ML models
 import yaml  # For parsing YAML configuration files
@@ -162,6 +164,11 @@ class FraudDetectionInference:
         kafka_sasl_mechanism = kafka_config.get("sasl_mechanism", "PLAIN")
         kafka_username = kafka_config.get("username")
         kafka_password = kafka_config.get("password")
+
+        #added here
+        ssl_cafile = certifi.where(),  # or path to your CA certificate
+        ssl_check_hostname = True,
+        ssl_cert_reqs = ssl.CERT_REQUIRED,
 
         # Configure Kafka SASL authentication string
         kafka_sasl_jaas_config = (
