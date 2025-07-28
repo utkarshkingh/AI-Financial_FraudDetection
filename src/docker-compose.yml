@@ -25,7 +25,7 @@ x-airflow-common:
     # If you want to use it, outcomment it and replace airflow.cfg with the name of your config file
     # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
     MLFLOW_TRACKING_URI: 'http://mlflow-server:5500'
-    MLFLOW_S3_ENDPOINT_URL: 'http://minio:9000'
+    MLFLOW_S3_ENDPOINT_URL: 'http://minio:7000'
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
@@ -270,8 +270,8 @@ services:
       - .env
     entrypoint: >
       /bin/sh -c "
-      /tmp/wait-for-it.sh minio:9000 &&
-      /usr/bin/mc alias set minio http://minio:9000 ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY} &&
+      /tmp/wait-for-it.sh minio:7000 &&
+      /usr/bin/mc alias set minio http://minio:7000 ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY} &&
       /usr/bin/mc mb minio/mlflow;
       exit 0;
       "
@@ -310,7 +310,7 @@ services:
     ports:
       - "5500:5500"
     environment:
-      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:7000
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     command: mlflow server --port 5500 --host 0.0.0.0 --backend-store-uri postgresql+psycopg2://mlflow:mlflow@postgres/mlflow --default-artifact-root s3://mlflow
